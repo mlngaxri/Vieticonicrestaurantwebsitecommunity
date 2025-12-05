@@ -1,4 +1,4 @@
-import { Star, Award, Users } from "lucide-react@0.487.0";
+import { Star, Calendar } from "lucide-react@0.487.0";
 
 export function AboutSection() {
   return (
@@ -41,7 +41,7 @@ export function AboutSection() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-[var(--border)]">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-[var(--border)]">
               <div className="text-center">
                 <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-xl bg-[var(--brand-gold)]/10">
                   <Star className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--brand-gold)]" />
@@ -49,21 +49,13 @@ export function AboutSection() {
                 <p className="text-xl sm:text-2xl text-[var(--brand-dark)] mb-1">5</p>
                 <p className="text-xs sm:text-sm text-[var(--text-muted)]">Star Average Rating</p>
               </div>
-              
+
               <div className="text-center">
                 <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-xl bg-[var(--brand-gold)]/10">
-                  <Award className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--brand-gold)]" />
+                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--brand-gold)]" />
                 </div>
-                <p className="text-xl sm:text-2xl text-[var(--brand-dark)] mb-1">50+</p>
-                <p className="text-xs sm:text-sm text-[var(--text-muted)]">Menu Items</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 rounded-xl bg-[var(--brand-gold)]/10">
-                  <Users className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--brand-gold)]" />
-                </div>
-                <p className="text-xl sm:text-2xl text-[var(--brand-dark)] mb-1">1000+</p>
-                <p className="text-xs sm:text-sm text-[var(--text-muted)]">Happy Customers</p>
+                <p className="text-xl sm:text-2xl text-[var(--brand-dark)] mb-1">2025</p>
+                <p className="text-xs sm:text-sm text-[var(--text-muted)]">Established</p>
               </div>
             </div>
           </div>
