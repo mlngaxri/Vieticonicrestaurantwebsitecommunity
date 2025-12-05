@@ -16,15 +16,15 @@ Your assets should be organized as follows:
 your-project/
 ├── public/
 │   └── assets/
-│       ├── viet-iconic-logo-full.png
-│       ├── viet-iconic-logo-icon.png
-│       ├── builder-logo.png
+│       ├── logo.png
+│       ├── logo.png
+│       ├── 64.jpg
 │       ├── hero-sky-background.png
 │       ├── hero-mountain-silhouette.png
-│       ├── menu-preview.png
+│       ├── menu.jpg
 │       ├── menu-drinks.png
-│       ├── review-photo-1.png
-│       └── review-photo-2.png
+│       ├── Jon.jpg
+│       └── Dan.jpg
 ├── components/
 └── ... (other files)
 ```
