@@ -1,5 +1,5 @@
-// Menu asset - replace with your actual Vercel domain
-const menuImage = "https://your-vercel-domain.vercel.app/assets/menu-preview.png";
+// Menu asset from /public/assets/
+const menuImage = "/assets/menu-preview.png";
 
 export function MenuPreview() {
   return (

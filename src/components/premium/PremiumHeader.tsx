@@ -1,9 +1,9 @@
 import { Phone, Menu, X } from "lucide-react@0.487.0";
 import { useState } from "react";
 
-// Logo assets - replace with your actual Vercel domain
-const logoFull = "https://your-vercel-domain.vercel.app/assets/viet-iconic-logo-full.png";
-const logoIcon = "https://your-vercel-domain.vercel.app/assets/viet-iconic-logo-icon.png";
+// Logo assets from /public/assets/
+const logoFull = "/assets/viet-iconic-logo-full.png";
+const logoIcon = "/assets/viet-iconic-logo-icon.png";
 
 export function PremiumHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

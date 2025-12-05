@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import "../parallax-hero.css";
 
-// ASSETS
+// ASSETS from /public/assets/
 // Sky: Clouds/Blue sky
-const skyImg = "https://your-vercel-domain.vercel.app/assets/hero-sky-background.png";
+const skyImg = "/assets/hero-sky-background.png";
 // Mountain: Silhouette range
-const mountainImg = "https://your-vercel-domain.vercel.app/assets/hero-mountain-silhouette.png";
+const mountainImg = "/assets/hero-mountain-silhouette.png";
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);

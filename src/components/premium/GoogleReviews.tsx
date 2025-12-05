@@ -2,9 +2,9 @@ import { Star } from "lucide-react@0.487.0";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { SimpleCarousel } from "./SimpleCarousel";
 
-// Review image assets - replace with your actual Vercel domain
-const reviewImg1 = "https://your-vercel-domain.vercel.app/assets/review-photo-1.png";
-const reviewImg2 = "https://your-vercel-domain.vercel.app/assets/review-photo-2.png";
+// Review image assets from /public/assets/
+const reviewImg1 = "/assets/review-photo-1.png";
+const reviewImg2 = "/assets/review-photo-2.png";
 
 const reviews = [
   {
