@@ -4,9 +4,9 @@ import "../parallax-hero.css";
 
 // ASSETS
 // Sky: Clouds/Blue sky
-import skyImg from "figma:asset/ae54c74b66c75f4bbe229708e1e974f82e530a46.png";
+const skyImg = "https://your-vercel-domain.vercel.app/assets/hero-sky-background.png";
 // Mountain: Silhouette range
-import mountainImg from "figma:asset/7934d21e2f899ba2949874762503d9b7a80f1560.png";
+const mountainImg = "https://your-vercel-domain.vercel.app/assets/hero-mountain-silhouette.png";
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);

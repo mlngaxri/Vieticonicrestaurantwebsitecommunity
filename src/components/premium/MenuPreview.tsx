@@ -1,4 +1,5 @@
-import menuImage from "figma:asset/b558915d2d179e802d8e70c47d58cd52e3671723.png";
+// Menu asset - replace with your actual Vercel domain
+const menuImage = "https://your-vercel-domain.vercel.app/assets/menu-preview.png";
 
 export function MenuPreview() {
   return (

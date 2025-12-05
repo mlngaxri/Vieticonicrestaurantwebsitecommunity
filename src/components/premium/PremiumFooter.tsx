@@ -1,6 +1,8 @@
 import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react@0.487.0";
-import logoFull from "figma:asset/314694a93c5d77f85214030891de1a6747e0fd21.png";
-import builderLogo from "figma:asset/d1ae0f73914afdafc28c0432729bbbb2cac0977c.png";
+
+// Logo assets - replace with your actual Vercel domain
+const logoFull = "https://your-vercel-domain.vercel.app/assets/viet-iconic-logo-full.png";
+const builderLogo = "https://your-vercel-domain.vercel.app/assets/builder-logo.png";
 
 export function PremiumFooter() {
   const currentYear = new Date().getFullYear();

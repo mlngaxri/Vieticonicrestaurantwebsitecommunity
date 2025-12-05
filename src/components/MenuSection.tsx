@@ -1,5 +1,6 @@
-import menuImage1 from "figma:asset/b558915d2d179e802d8e70c47d58cd52e3671723.png";
-import menuImage2 from "figma:asset/b52a2d25624e7690b920320ef8afd1b3de709f46.png";
+// Menu image assets - replace with your actual Vercel domain
+const menuImage1 = "https://your-vercel-domain.vercel.app/assets/menu-preview.png";
+const menuImage2 = "https://your-vercel-domain.vercel.app/assets/menu-drinks.png";
 
 export function MenuSection() {
   return (
