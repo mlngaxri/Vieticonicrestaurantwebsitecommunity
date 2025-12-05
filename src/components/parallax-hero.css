@@ -1,0 +1,57 @@
+/* parallax-hero.css */
+
+.parallax-hero-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  /* Fallback background color matching the deep green theme */
+  background-color: #0D3423; 
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  will-change: transform;
+}
+
+.parallax-image {
+  width: 120%; /* Overfill to prevent horizontal seams */
+  height: 100%;
+  object-fit: cover;
+  max-width: none; /* Ensure it can overflow */
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  will-change: transform;
+}
+
+/* Utility for screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
