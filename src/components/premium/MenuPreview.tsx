@@ -1,5 +1,5 @@
-// Menu asset from /public/assets/
-const menuImage = "/assets/menu-preview.png";
+// Menu asset from Unsplash (Temporary replacement for missing local assets)
+const menuImage = "https://images.unsplash.com/photo-1710186012500-68dd1e3e49f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwZm9vZCUyMGZsYXQlMjBsYXklMjB0YWJsZSUyMHNwcmVhZHxlbnwxfHx8fDE3NjQ5MDg0NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 
 export function MenuPreview() {
   return (

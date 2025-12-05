@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import "../parallax-hero.css";
 
-// ASSETS from /public/assets/
+// ASSETS from Unsplash (Temporary replacement for missing local assets)
 // Sky: Clouds/Blue sky
-const skyImg = "/assets/hero-sky-background.png";
+const skyImg = "https://images.unsplash.com/photo-1628307779827-446def5883be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxza3klMjBjbG91ZHMlMjBibHVlJTIwYmFja2dyb3VuZHxlbnwxfHx8fDE3NjQ5MDg0NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 // Mountain: Silhouette range
-const mountainImg = "/assets/hero-mountain-silhouette.png";
+const mountainImg = "https://images.unsplash.com/photo-1706195173268-c1ff4813e724?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMHNpbGhvdWV0dGUlMjBsYXllcnxlbnwxfHx8fDE3NjQ5MDg0NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);

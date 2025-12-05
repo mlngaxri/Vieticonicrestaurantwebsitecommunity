@@ -70,19 +70,12 @@ export function AboutSection() {
 
           {/* Image Placeholder */}
           <div className="relative">
-            <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-[var(--brand-dark)] to-[var(--brand-gold)]/40 overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 flex items-center justify-center p-12">
-                <div className="text-center text-white/90 space-y-4">
-                  <div className="text-6xl mb-4">🍜</div>
-                  <p className="text-xl">
-                    [Replace with restaurant interior photo showing warm ambiance, 
-                    dining area, or chef preparing authentic Vietnamese dishes]
-                  </p>
-                  <p className="text-sm text-white/60">
-                    Suggested: High-quality image of restaurant space or team
-                  </p>
-                </div>
-              </div>
+            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1762015669851-4098e655ec87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwcmVzdGF1cmFudCUyMGludGVyaW9yJTIwbW9kZXJufGVufDF8fHx8MTc2NDkwODQ1N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                alt="Viet Iconic Interior" 
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Decorative Elements */}

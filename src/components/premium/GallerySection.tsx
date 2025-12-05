@@ -2,12 +2,12 @@ import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react@0.487.0";
 
 const galleryItems = [
-  { alt: "Authentic Vietnamese Pho" },
-  { alt: "Fresh Banh Mi Sandwich" },
-  { alt: "Fresh Spring Rolls" },
-  { alt: "Restaurant Interior" },
-  { alt: "Vietnamese Iced Coffee" },
-  { alt: "Bun Bowl" },
+  { alt: "Authentic Vietnamese Pho", image: "https://images.unsplash.com/photo-1701480253822-1842236c9a97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwcGhvJTIwc291cCUyMGJvd2x8ZW58MXx8fHwxNzY0OTA4NTUxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
+  { alt: "Fresh Banh Mi Sandwich", image: "https://images.unsplash.com/photo-1599719455360-ff0be7c4dd06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwYmFuaCUyMG1pJTIwc2FuZHdpY2h8ZW58MXx8fHwxNzY0OTA4NTUxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
+  { alt: "Fresh Spring Rolls", image: "https://images.unsplash.com/photo-1656945843375-207bb6e47750?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwc3ByaW5nJTIwcm9sbHMlMjBmcmVzaHxlbnwxfHx8fDE3NjQ5MDg1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
+  { alt: "Restaurant Interior", image: "https://images.unsplash.com/photo-1764175760456-7d7cb1b7e1c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwcmVzdGF1cmFudCUyMGludGVyaW9yJTIwZGVzaWdufGVufDF8fHx8MTc2NDkwODU1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
+  { alt: "Vietnamese Iced Coffee", image: "https://images.unsplash.com/photo-1764147575276-db55506bb62d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwaWNlZCUyMGNvZmZlZSUyMGdsYXNzfGVufDF8fHx8MTc2NDkwODU1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
+  { alt: "Bun Bowl", image: "https://images.unsplash.com/photo-1636474498689-27e2d3ecf8d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwYnVuJTIwY2hhJTIwYm93bCUyMG5vb2RsZXxlbnwxfHx8fDE3NjQ5MDg1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
 ];
 
 export function GallerySection() {
@@ -64,12 +64,12 @@ export function GallerySection() {
                 key={idx}
                 className="flex-shrink-0 w-64 sm:w-72 md:w-80 group"
               >
-                <div className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 aspect-[3/4] bg-white border border-[var(--border)] flex flex-col items-center justify-center p-6 sm:p-8 text-center">
-                  <div className="w-16 h-16 mb-4 rounded-full bg-[var(--bg-cream)] flex items-center justify-center text-2xl">
-                    📷
+                <div className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 aspect-[3/4] bg-white border border-[var(--border)] flex flex-col items-center justify-center p-0 text-center">
+                  <img src={item.image} alt={item.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h4 className="font-serif text-base sm:text-lg text-white mb-1 drop-shadow-md">{item.alt}</h4>
                   </div>
-                  <h4 className="font-serif text-base sm:text-lg text-[var(--brand-dark)] mb-2">{item.alt}</h4>
-                  <p className="text-xs sm:text-sm text-[var(--text-muted)] opacity-60">Image coming soon</p>
                   
                   {/* Decorative corner */}
                   <div className="absolute top-0 right-0 w-16 h-16 bg-[var(--brand-gold)]/10 rounded-bl-full -mr-8 -mt-8"></div>
