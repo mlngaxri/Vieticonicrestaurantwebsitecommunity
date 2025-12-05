@@ -1,6 +1,16 @@
 import { MapPin, Clock, Phone, Mail, Navigation } from "lucide-react@0.487.0";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { GENERAL_HOURS, BRUNCH_HOURS, DINNER_HOURS, getStatus } from "./utils/hours";
+import { useEffect, useState } from "react";
+import { cn } from "../ui/utils";
 
 export function LocationHours() {
+  const [status, setStatus] = useState<{ status: string; message: string } | null>(null);
+  
+  useEffect(() => {
+    setStatus(getStatus());
+  }, []);
+
   return (
     <section id="contact" className="py-24 bg-[var(--bg-cream)]">
       <div className="container mx-auto px-6 lg:px-8">
@@ -54,31 +64,47 @@ export function LocationHours() {
                   
                   {/* Content flows with icon on the side */}
                   <div className="pr-16 sm:pr-20">
-                    <h3 className="text-xl sm:text-2xl font-semibold text-[var(--brand-dark)] mb-4">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-[var(--brand-dark)] mb-2">
                       Opening Hours
                     </h3>
+                    {status && (
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--bg-cream)] border border-[var(--brand-gold)]/30">
+                        <span className={cn("w-2 h-2 rounded-full animate-pulse", 
+                          status.status === "Open" ? "bg-emerald-500" : 
+                          status.status.includes("Soon") ? "bg-amber-500" : "bg-red-500"
+                        )} />
+                        <span className="text-sm font-medium text-[var(--brand-dark)]">
+                          {status.status === "Open" ? "Open Now" : status.status}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   
-                  {/* Hours list - flows below heading, can extend under icon */}
-                  <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-[var(--text-muted)]">
-                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-2">
-                      <span className="flex-shrink-0">Monday – Thursday</span>
-                      <span className="font-semibold text-[var(--brand-dark)]">11:00 AM – 8:00 PM</span>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-2">
-                      <span className="flex-shrink-0">Friday – Saturday</span>
-                      <span className="font-semibold text-[var(--brand-dark)]">11:00 AM – 9:00 PM</span>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-2">
-                      <span className="flex-shrink-0">Sunday</span>
-                      <span className="font-semibold text-[var(--brand-dark)]">12:00 PM – 8:00 PM</span>
-                    </div>
-                  </div>
+                  {/* Tabs for different schedules */}
+                  <Tabs defaultValue="general" className="mt-6">
+                    <TabsList className="grid w-full grid-cols-3 bg-[var(--bg-cream)] p-1 h-auto rounded-lg">
+                      <TabsTrigger value="general" className="data-[state=active]:bg-white data-[state=active]:text-[var(--brand-gold)] data-[state=active]:shadow-sm py-2 text-xs sm:text-sm">General</TabsTrigger>
+                      <TabsTrigger value="brunch" className="data-[state=active]:bg-white data-[state=active]:text-[var(--brand-gold)] data-[state=active]:shadow-sm py-2 text-xs sm:text-sm">Brunch</TabsTrigger>
+                      <TabsTrigger value="dinner" className="data-[state=active]:bg-white data-[state=active]:text-[var(--brand-gold)] data-[state=active]:shadow-sm py-2 text-xs sm:text-sm">Dinner</TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="general" className="mt-4 animate-in fade-in-50 duration-300">
+                      <ScheduleList hours={GENERAL_HOURS} />
+                    </TabsContent>
+                    <TabsContent value="brunch" className="mt-4 animate-in fade-in-50 duration-300">
+                      <ScheduleList hours={BRUNCH_HOURS} />
+                    </TabsContent>
+                    <TabsContent value="dinner" className="mt-4 animate-in fade-in-50 duration-300">
+                      <ScheduleList hours={DINNER_HOURS} />
+                    </TabsContent>
+                  </Tabs>
                   
                   <div className="mt-6 pt-6 border-t border-[var(--border)]">
-                    <p className="text-xs sm:text-sm text-[var(--brand-gold)] font-semibold">
-                      ⏰ Open Today: 10:00 AM – 8:00 PM
-                    </p>
+                    {status && (
+                      <p className="text-xs sm:text-sm text-[var(--brand-gold)] font-semibold">
+                        ⏰ {status.message}
+                      </p>
+                    )}
                     <p className="text-xs text-[var(--text-muted)] mt-2">
                       * Hours may vary on public holidays. Call to confirm.
                     </p>
@@ -138,4 +164,76 @@ export function LocationHours() {
       </div>
     </section>
   );
+}
+
+function ScheduleList({ hours }: { hours: any[] }) {
+  const today = new Date().getDay();
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  
+  // Group by identical hours to save space (optional, but clean)
+  // Actually user wants "Update this based on the day, automatically"
+  // Let's show a concise list: 
+  
+  // Strategy: Group consecutive days with same hours
+  const grouped = hours.reduce((acc: any[], curr) => {
+    const last = acc[acc.length - 1];
+    const timeStr = `${curr.open} - ${curr.close}`;
+    
+    if (last && last.timeStr === timeStr && last.endDayIndex === curr.day - 1) {
+       last.endDayIndex = curr.day;
+       last.days.push(curr.day);
+    } else {
+       // Handle wrapping (Sun -> Mon) if needed, but simpler to just list or group sequential
+       // Since input is sorted by day 0..6, but week usually starts Mon in display or Sun? 
+       // Let's just display distinct groups.
+       // Actually, the user input has specific ranges.
+       acc.push({
+         startDayIndex: curr.day,
+         endDayIndex: curr.day,
+         days: [curr.day],
+         timeStr,
+         open: curr.open,
+         close: curr.close
+       });
+    }
+    return acc;
+  }, []);
+
+  return (
+    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-[var(--text-muted)]">
+      {grouped.map((group: any, idx: number) => {
+         const isTodayIncluded = group.days.includes(today);
+         
+         let dayLabel = "";
+         if (group.days.length === 1) {
+           dayLabel = dayNames[group.days[0]];
+         } else if (group.days.length === 7) {
+           dayLabel = "Every Day";
+         } else {
+            // Check if consecutive
+            // Our grouping logic above only groups consecutive indices.
+            // Note: Sunday is 0. If we want Mon-Sun ordering, we might need to sort.
+            // The helper arrays are 0-6 (Sun-Sat).
+            // Let's just use the first and last day name if > 1
+            dayLabel = `${dayNames[group.startDayIndex]} – ${dayNames[group.endDayIndex]}`;
+         }
+
+         return (
+          <div key={idx} className={cn("flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-2 p-2 rounded transition-colors", isTodayIncluded ? "bg-[var(--brand-gold)]/10 text-[var(--brand-dark)] font-medium" : "")}>
+            <span className="flex-shrink-0">{dayLabel}</span>
+            <span className={cn("font-semibold", isTodayIncluded ? "text-[var(--brand-dark)]" : "text-[var(--brand-dark)]")}>
+              {formatTime(group.open)} – {formatTime(group.close)}
+            </span>
+          </div>
+         );
+      })}
+    </div>
+  );
+}
+
+function formatTime(timeStr: string) {
+  const [h, m] = timeStr.split(":").map(Number);
+  const ampm = h >= 12 ? "pm" : "am";
+  const h12 = h % 12 || 12;
+  return `${h12}${m > 0 ? `:${m.toString().padStart(2, "0")}` : ""} ${ampm}`;
 }

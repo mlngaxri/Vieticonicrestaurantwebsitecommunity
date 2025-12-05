@@ -1,6 +1,7 @@
 import { Phone, Menu, X } from "lucide-react@0.487.0";
 import { useState } from "react";
 import { motion } from "motion/react";
+import { OperatingStatus } from "./OperatingStatus";
 
 // Logo from imgur
 const logoFull = "https://i.imgur.com/fxQsKb9.png";
@@ -19,8 +20,8 @@ export function PremiumHeader() {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-lg shadow-sm z-50 border-b border-[var(--border)]">
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex items-center">
             <img 
@@ -71,6 +72,10 @@ export function PremiumHeader() {
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-4">
+            <div className="hidden xl:block">
+              <OperatingStatus />
+            </div>
+
             <a 
               href="tel:0466634567"
               className="hidden md:flex items-center gap-2 text-[var(--brand-dark)] hover:text-[var(--brand-gold)] transition-colors"
@@ -172,6 +177,9 @@ export function PremiumHeader() {
             >
               Contact
             </button>
+            <div className="py-2 flex justify-start">
+              <OperatingStatus />
+            </div>
             <a 
               href="tel:0466634567"
               className="flex items-center gap-2 text-[var(--brand-dark)] py-2"

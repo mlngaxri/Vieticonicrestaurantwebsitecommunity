@@ -39,9 +39,10 @@ export function MenuPreview() {
             onClick={() => setSelectedMenu('main')}
             className={`px-6 sm:px-8 py-3 rounded-xl transition-all duration-300 ${
               selectedMenu === 'main'
-                ? 'bg-[var(--brand-dark)] text-white shadow-lg'
-                : 'bg-gray-100 text-[var(--text)] hover:bg-gray-200'
+                ? 'text-white hover:shadow-[0_6px_20px_0_rgba(184,140,72,0.6)]'
+                : 'bg-gray-100 text-[var(--text)] hover:bg-gray-200 hover:shadow-[0_4px_14px_0_rgba(184,140,72,0.5)]'
             }`}
+            style={selectedMenu === 'main' ? { backgroundColor: '#b88c48' } : {}}
           >
             Main Menu
           </button>
@@ -49,9 +50,10 @@ export function MenuPreview() {
             onClick={() => setSelectedMenu('full')}
             className={`px-6 sm:px-8 py-3 rounded-xl transition-all duration-300 ${
               selectedMenu === 'full'
-                ? 'bg-[var(--brand-dark)] text-white shadow-lg'
-                : 'bg-gray-100 text-[var(--text)] hover:bg-gray-200'
+                ? 'text-white hover:shadow-[0_6px_20px_0_rgba(184,140,72,0.6)]'
+                : 'bg-gray-100 text-[var(--text)] hover:bg-gray-200 hover:shadow-[0_4px_14px_0_rgba(184,140,72,0.5)]'
             }`}
+            style={selectedMenu === 'full' ? { backgroundColor: '#b88c48' } : {}}
           >
             Full Menu
           </button>
@@ -59,9 +61,10 @@ export function MenuPreview() {
             onClick={() => setSelectedMenu('drinks')}
             className={`px-6 sm:px-8 py-3 rounded-xl transition-all duration-300 ${
               selectedMenu === 'drinks'
-                ? 'bg-[var(--brand-dark)] text-white shadow-lg'
-                : 'bg-gray-100 text-[var(--text)] hover:bg-gray-200'
+                ? 'text-white hover:shadow-[0_6px_20px_0_rgba(184,140,72,0.6)]'
+                : 'bg-gray-100 text-[var(--text)] hover:bg-gray-200 hover:shadow-[0_4px_14px_0_rgba(184,140,72,0.5)]'
             }`}
+            style={selectedMenu === 'drinks' ? { backgroundColor: '#b88c48' } : {}}
           >
             Drinks Menu
           </button>

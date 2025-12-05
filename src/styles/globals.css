@@ -48,6 +48,13 @@
   body {
     @apply bg-[var(--bg)] text-[var(--text)];
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -178,6 +185,8 @@
 html {
   font-size: var(--font-size);
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 /* Gradient radial utility for glow effects */
