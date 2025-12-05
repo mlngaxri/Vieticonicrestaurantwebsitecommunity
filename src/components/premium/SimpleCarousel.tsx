@@ -14,6 +14,9 @@ export function SimpleCarousel({ children, itemsPerView = { mobile: 1, tablet: 2
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(itemsPerView.desktop);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
 
   const totalItems = children.length;
 
@@ -52,13 +55,46 @@ export function SimpleCarousel({ children, itemsPerView = { mobile: 1, tablet: 2
     });
   };
 
+  // Touch handlers for swipe functionality
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    
+    const minSwipeDistance = 50;
+    const distance = touchStart - touchEnd;
+    
+    if (distance > minSwipeDistance) {
+      // Swiped left - go to next
+      goToNext();
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right - go to previous
+      goToPrevious();
+    }
+    
+    setIsDragging(false);
+  };
+
   // Calculate how many dots to show - one dot per scrollable position
   const totalDots = totalItems - itemsToShow + 1;
 
   return (
     <div className="relative w-full">
       {/* Carousel Container */}
-      <div className="overflow-hidden" ref={containerRef}>
+      <div 
+        className="overflow-hidden" 
+        ref={containerRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className="flex transition-transform duration-500 ease-out"
           style={{

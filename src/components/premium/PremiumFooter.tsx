@@ -2,7 +2,7 @@ import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react@0.487.0";
 
 // Logo from imgur
 const logoFull = "https://i.imgur.com/fxQsKb9.png";
-const builderLogo = "/assets/builder-logo.png";
+const builderLogo = "https://i.imgur.com/pOQfTun.png";
 
 export function PremiumFooter() {
   const currentYear = new Date().getFullYear();

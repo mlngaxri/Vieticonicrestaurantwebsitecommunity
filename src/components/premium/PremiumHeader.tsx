@@ -1,5 +1,6 @@
 import { Phone, Menu, X } from "lucide-react@0.487.0";
 import { useState } from "react";
+import { motion } from "motion/react";
 
 // Logo from imgur
 const logoFull = "https://i.imgur.com/fxQsKb9.png";
@@ -84,71 +85,108 @@ export function PremiumHeader() {
               Order Now
             </a>
             
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Animated Hamburger */}
             <button
-              className="lg:hidden p-2"
+              className="lg:hidden p-2 relative w-10 h-10 flex items-center justify-center"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6 text-[var(--brand-dark)]" />
-              ) : (
-                <Menu className="w-6 h-6 text-[var(--brand-dark)]" />
-              )}
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <motion.span
+                  className="w-full h-0.5 bg-[var(--brand-dark)] block"
+                  animate={isMenuOpen ? {
+                    rotate: 45,
+                    y: 9,
+                  } : {
+                    rotate: 0,
+                    y: 0,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+                <motion.span
+                  className="w-full h-0.5 bg-[var(--brand-dark)] block"
+                  animate={isMenuOpen ? {
+                    opacity: 0,
+                  } : {
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.span
+                  className="w-full h-0.5 bg-[var(--brand-dark)] block"
+                  animate={isMenuOpen ? {
+                    rotate: -45,
+                    y: -9,
+                  } : {
+                    rotate: 0,
+                    y: 0,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+              </div>
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="lg:hidden py-6 border-t border-[var(--border)]">
-            <div className="flex flex-col gap-4">
-              <button
-                onClick={() => scrollToSection("home")}
-                className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection("menu")}
-                className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
-              >
-                Menu
-              </button>
-              <button
-                onClick={() => scrollToSection("gallery")}
-                className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
-              >
-                Gallery
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
-              >
-                Contact
-              </button>
-              <a 
-                href="tel:0466634567"
-                className="flex items-center gap-2 text-[var(--brand-dark)] py-2"
-              >
-                <Phone className="w-4 h-4" />
-                <span>0466 634 567</span>
-              </a>
-              <a 
-                href="tel:0466634567" 
-                className="btn-primary mt-2 block text-center hover:no-underline"
-              >
-                Order Now
-              </a>
-            </div>
-          </nav>
-        )}
+        <motion.nav
+          initial={false}
+          animate={isMenuOpen ? {
+            height: "auto",
+            opacity: 1,
+          } : {
+            height: 0,
+            opacity: 0,
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="lg:hidden overflow-hidden border-t border-[var(--border)]"
+        >
+          <div className="flex flex-col gap-4 py-6">
+            <button
+              onClick={() => scrollToSection("home")}
+              className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
+              className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection("menu")}
+              className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
+            >
+              Menu
+            </button>
+            <button
+              onClick={() => scrollToSection("gallery")}
+              className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
+            >
+              Gallery
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-[var(--text)] hover:text-[var(--brand-gold)] transition-colors text-left py-2"
+            >
+              Contact
+            </button>
+            <a 
+              href="tel:0466634567"
+              className="flex items-center gap-2 text-[var(--brand-dark)] py-2"
+            >
+              <Phone className="w-4 h-4" />
+              <span>0466 634 567</span>
+            </a>
+            <a 
+              href="tel:0466634567" 
+              className="btn-primary mt-2 block text-center hover:no-underline"
+            >
+              Order Now
+            </a>
+          </div>
+        </motion.nav>
       </div>
     </header>
   );

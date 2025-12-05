@@ -2,9 +2,9 @@ import { Star } from "lucide-react@0.487.0";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { SimpleCarousel } from "./SimpleCarousel";
 
-// Review image assets from Unsplash (Temporary replacement for missing local assets)
-const reviewImg1 = "https://images.unsplash.com/photo-1760378555604-4391305f49c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZW9wbGUlMjBlYXRpbmclMjB2aWV0bmFtZXNlJTIwcmVzdGF1cmFudHxlbnwxfHx8fDE3NjQ5MDg0NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-const reviewImg2 = "https://images.unsplash.com/photo-1762015669851-4098e655ec87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWV0bmFtZXNlJTIwcmVzdGF1cmFudCUyMGludGVyaW9yJTIwbW9kZXJufGVufDF8fHx8MTc2NDkwODQ1N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+// Review image assets from imgur
+const reviewImg1 = "https://i.imgur.com/MW63jhv.jpeg";
+const reviewImg2 = "https://i.imgur.com/7LN2D8M.png";
 
 const reviews = [
   {
